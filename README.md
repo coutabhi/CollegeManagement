@@ -4,6 +4,7 @@
 To start first extract backend and fronted zip file
 
 # Backend - Spring boot
+
    1. Open the extracted CollegeMananementBackend folder in STS or eclipse wait for build
    2. Configure the application.properties first 
    3. Run the main (CollegeManagementBackendApplication.java) as java
