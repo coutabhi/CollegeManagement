@@ -1,0 +1,191 @@
+SQL SCHEMA
+----------
+
+
+CREATE TABLE `admin` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `firstname` varchar(255) NOT NULL,
+  `lastname` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_c0r9atamxvbhjjvy5j8da1kam` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+CREATE TABLE `book` (
+  `id` int NOT NULL,
+  `author` varchar(255) NOT NULL,
+  `genre` varchar(255) NOT NULL,
+  `isbn` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `book_id` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+CREATE TABLE `book_assignment` (
+  `id` int NOT NULL,
+  `book_id` int DEFAULT NULL,
+  `student_id` int DEFAULT NULL,
+  `bid` int NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_tr1igfxxx6x4jo8vi97ayel1u` (`book_id`),
+  KEY `FK13vfbauw74i3nwd70h9w1rl8f` (`student_id`),
+  CONSTRAINT `FK13vfbauw74i3nwd70h9w1rl8f` FOREIGN KEY (`student_id`) REFERENCES `student` (`id`),
+  CONSTRAINT `FK9ijr38qkuu3qcblj34mh4de2w` FOREIGN KEY (`book_id`) REFERENCES `book` (`id`),
+  CONSTRAINT `FKt94xtih31n6ir1drjmn664a69` FOREIGN KEY (`id`) REFERENCES `book` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+CREATE TABLE `branch` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `branch` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+CREATE TABLE `cefaculty` (
+  `id` int NOT NULL,
+  `designation` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `mobileno` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+CREATE TABLE `cestudent` (
+  `id` int NOT NULL,
+  `branch` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `mobileno` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `sem` varchar(255) DEFAULT NULL,
+  `year` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+CREATE TABLE `eefaculty` (
+  `id` int NOT NULL,
+  `designation` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `mobileno` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+CREATE TABLE `eestudent` (
+  `id` int NOT NULL,
+  `branch` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `mobileno` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `sem` varchar(255) DEFAULT NULL,
+  `year` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+CREATE TABLE `event` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `date` datetime(6) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `location` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+CREATE TABLE `fees` (
+  `id` int NOT NULL,
+  `accno` varchar(255) DEFAULT NULL,
+  `branch` varchar(255) DEFAULT NULL,
+  `date` varchar(255) DEFAULT NULL,
+  `fees` varchar(255) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `mobileno` varchar(255) DEFAULT NULL,
+  `pmode` varchar(255) DEFAULT NULL,
+  `sem` varchar(255) DEFAULT NULL,
+  `year` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+CREATE TABLE `marksheet` (
+  `id` int NOT NULL,
+  `chemistry` varchar(255) DEFAULT NULL,
+  `enggdraw` varchar(255) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `mi` varchar(255) DEFAULT NULL,
+  `physics` varchar(255) DEFAULT NULL,
+  `totalmarks` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+CREATE TABLE `mefaculty` (
+  `id` int NOT NULL,
+  `designation` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `mobileno` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+CREATE TABLE `mestudent` (
+  `id` int NOT NULL,
+  `branch` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `mobileno` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `sem` varchar(255) DEFAULT NULL,
+  `year` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+CREATE TABLE `staff` (
+  `id` int NOT NULL,
+  `designation` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `mobileno` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+CREATE TABLE `student` (
+  `id` int NOT NULL,
+  `branch` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `firstname` varchar(255) DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `lastname` varchar(255) DEFAULT NULL,
+  `mobileno` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `sem` varchar(255) DEFAULT NULL,
+  `year` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
